@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Print Service</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(140deg, rgb(115 88 255), white);
+      margin: 0;
+    }
+
+    header {
+      background: url("https://a.storyblok.com/f/165154/1280x720/0a30e26489/01_digital-printing-overview.jpg/m/");
+      color: white;
+      text-align: center;
+      padding: 70px;
+      box-shadow: -17px 12px 5px rgb(0 0 0 / 23%);
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px);
+    }
+
+    .box {
+      background: linear-gradient(90deg, rgb(55, 239, 245), rgb(255, 115, 0));
+      padding: 90px;
+      text-align: center;
+      border-radius: 11px;
+      box-shadow: -19px 20px 10px rgb(0 0 0 / 24%);
+      width: 300px;
+      transform: translateY(-50px);
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    button:hover {
+      border-color: #c11e5c;
+    }
+
+    header h1 {
+      font-size: 40px;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 15px 30px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Campus Printing Services</h1>
+</header>
+
+<div class="main">
+  <div class="box">
+    <h2>📄 Campus Printing Service</h2>
+    <p>Avoid crowds. Print online.</p>
+
+    <button onclick="goUser()">User</button>
+    <button onclick="goShop()">Shopkeeper</button>
+  </div>
+</div>
+
+<script>
+/* -------------------------------
+   BASIC APP INITIALIZATION
+--------------------------------*/
+
+// Initialize storage if not exists
+if (!localStorage.getItem("orders")) {
+  localStorage.setItem("orders", JSON.stringify([]));
+}
+
+/* -------------------------------
+   NAVIGATION FUNCTIONS
+--------------------------------*/
+
+function goUser() {
+  // Track user visit
+  localStorage.setItem("lastRole", "user");
+
+  window.location.href = "user.html";
+}
+
+function goShop() {
+  // Track shop visit
+  localStorage.setItem("lastRole", "shopkeeper");
+
+  window.location.href = "shop-login.html";
+}
+
+/* -------------------------------
+   OPTIONAL: DEBUG / STATUS
+--------------------------------*/
+
+// You can see stored data in console
+console.log("All Orders:", JSON.parse(localStorage.getItem("orders")));
+console.log("Last Role:", localStorage.getItem("lastRole"));
+</script>
+
+</body>
+</html>

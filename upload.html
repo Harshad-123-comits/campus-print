@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Upload Document</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2 id="shopTitle">Printing</h2>
+
+  <form onsubmit="submitForm(event)">
+    <input type="file" required>
+    <input type="number" id="copies" value="1" min="1">
+    
+    <select id="type">
+      <option>Black & White</option>
+      <option>Color</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("shopTitle").innerText =
+  "Printing at " + params.get("shop");
+
+function submitForm(e){
+  e.preventDefault();
+
+  const copies = document.getElementById("copies").value;
+  const type = document.getElementById("type").value;
+
+  localStorage.setItem("order", JSON.stringify({copies, type}));
+
+  alert("Order Submitted!");
+}
+</script>
+
+</body>
+</html>

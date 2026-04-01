@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shop Login</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #eef;
+}
+
+.box {
+  width: 300px;
+  margin: 150px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Shop Login</h2>
+  <input type="text" id="id" placeholder="Shop ID">
+  <input type="password" id="pass" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+  if(document.getElementById("id").value == "101" &&
+     document.getElementById("pass").value == "1234"){
+    window.location.href = "shopkeeper.html";
+  } else {
+    alert("Invalid Login");
+  }
+}
+</script>
+
+</body>
+</html>

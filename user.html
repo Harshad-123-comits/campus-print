@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Shop</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #1f1c2c, #928dab);
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.shop-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.shop-card {
+  width: 250px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shop-card:hover {
+  transform: translateY(-10px);
+}
+
+.price {
+  color: #00f5a0;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Select Shop</h2>
+
+<div class="shop-container">
+
+  <div class="shop-card" onclick="openShop('Shop101')">
+    <h3>Shop 101</h3>
+    <p>Available</p>
+    <p class="price">₹2/page</p>
+  </div>
+
+  <div class="shop-card" onclick="openShop('Shop102')">
+    <h3>Shop 102</h3>
+    <p>Available</p>
+    <p class="price">₹3/page</p>
+  </div>
+
+</div>
+
+<script>
+function openShop(shop){
+  window.location.href = "upload.html?shop=" + shop;
+}
+</script>
+
+</body>
+</html>
