@@ -58,18 +58,37 @@ button {
 
 <script>
 const params = new URLSearchParams(window.location.search);
+const shopName = params.get("shop");
+
 document.getElementById("shopTitle").innerText =
-  "Printing at " + params.get("shop");
+  "Printing at " + shopName;
 
 function submitForm(e){
   e.preventDefault();
 
+  const fileInput = document.querySelector("input[type='file']");
+  const file = fileInput.files[0];
+
   const copies = document.getElementById("copies").value;
   const type = document.getElementById("type").value;
 
-  localStorage.setItem("order", JSON.stringify({copies, type}));
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  orders.push({
+    shop: shopName,
+    fileName: file ? file.name : "No file",   //  store file name
+    copies: copies,
+    type: type,
+    status: "Pending",
+    time: new Date().toLocaleString()
+  });
+
+  localStorage.setItem("orders", JSON.stringify(orders));
 
   alert("Order Submitted!");
+
+  // Optional: reset form
+  e.target.reset();
 }
 </script>
 
