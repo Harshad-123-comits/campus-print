@@ -45,17 +45,26 @@ th {
 </table>
 
 <script>
-const order = JSON.parse(localStorage.getItem("order"));
+// Example: change this for each shop login
+let shopName = "Shop101";  
 
-if(order){
-  document.getElementById("orders").innerHTML = `
-    <tr>
-      <td>${order.copies}</td>
-      <td>${order.type}</td>
-      <td>Pending</td>
-    </tr>
-  `;
-}
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let html = "";
+
+orders.forEach((order, index) => {
+  if(order.shop === shopName){   // ✅ filter by shop
+    html += `
+      <tr>
+        <td>${order.copies}</td>
+        <td>${order.type}</td>
+        <td>${order.status}</td>
+      </tr>
+    `;
+  }
+});
+
+document.getElementById("orders").innerHTML = html;
 </script>
 
 </body>
