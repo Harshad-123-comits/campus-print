@@ -1,71 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Shop Dashboard</title>
-
-<style>
-body {
-  font-family: Arial;
-  background: #fafafa;
-  padding: 20px;
-}
-
-table {
-  width: 100%;
-  background: white;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-}
-
-th {
-  background: black;
-  color: white;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Dashboard - Campus Print</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header>
+    <div class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      <a href="index.html">Campus Print</a>
+      <span class="badge badge-printed" style="margin-left: 0.5rem; background: rgba(59, 130, 246, 0.2); color: #60a5fa;">Admin</span>
+      <span id="authStatus" style="margin-left: 0.75rem; color: var(--text-muted); font-size: 0.9rem;">Checking login...</span>
+    </div>
+    <button id="logoutBtn" class="btn btn-secondary" style="width: auto; padding: 0.5rem 1rem;">Logout</button>
+  </header>
 
-<h2>Print Queue</h2>
+  <main class="container">
+    <h2>Operations Dashboard</h2>
+    
+    <!-- Dashboard Stats Widget -->
+    <div class="stats-grid">
+      <div class="glass-card stat-card">
+        <div class="stat-value" id="statPending">0</div>
+        <div class="stat-label">Pending Jobs</div>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-value" id="statPrinted">0</div>
+        <div class="stat-label">Completed Jobs</div>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-value" id="statTotalItems">0</div>
+        <div class="stat-label">Total Copies</div>
+      </div>
+    </div>
 
-<table>
-<tr>
-  <th>Copies</th>
-  <th>Type</th>
-  <th>Status</th>
-</tr>
+    <!-- Data Table -->
+    <div class="glass-card table-wrapper">
+      <table id="jobsTable">
+        <thead>
+          <tr>
+            <th>Document Name</th>
+            <th>Copies</th>
+            <th>Type</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="jobsTableBody">
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+              Connecting to Supabase...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 
-<tbody id="orders"></tbody>
-
-</table>
-
-<script>
-// Example: change this for each shop login
-let shopName = "Shop101";  
-
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-
-let html = "";
-
-orders.forEach((order, index) => {
-  if(order.shop === shopName){   // ✅ filter by shop
-    html += `
-      <tr>
-        <td>${order.copies}</td>
-        <td>${order.type}</td>
-        <td>${order.status}</td>
-      </tr>
-    `;
-  }
-});
-
-document.getElementById("orders").innerHTML = html;
-</script>
-
+  <script type="module" src="shopkeeper.js"></script>
 </body>
 </html>
