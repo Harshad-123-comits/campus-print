@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Print - Submit Job</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-blobs">
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+  </div>
+
+  <header class="animate-slide-up">
+    <div class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      <a href="index.html">Campus Print</a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="choose-shop.html" class="nav-link">Choose Shop</a>
+      <a href="shop-login.html" class="nav-link">Admin Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="form-container glass-panel animate-slide-up delay-1">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Print Request</h2>
+      
+      <div id="alertBox" class="alert hidden"></div>
+      <div id="selectedShopBanner" class="selected-shop-banner hidden"></div>
+
+      <form id="printForm">
+        <div class="form-group">
+          <div class="file-upload-zone" id="dropZone">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <p style="color: var(--text-muted-dark); font-size: 1rem; font-weight: 500;">Click to browse or drag your file here</p>
+            <input type="file" id="fileDoc" required accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+            <div id="fileNameDisplay" class="file-name"></div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="copies">Copies</label>
+            <input type="number" id="copies" min="1" value="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="printType">Print Type</label>
+            <select id="printType" required>
+              <option value="Black & White">B & W</option>
+              <option value="Color">Color</option>
+              <option value="Negative">Negative</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 0.5rem;">
+          <label for="paymentMethod">Payment Method</label>
+          <select id="paymentMethod" required>
+            <option value="Cash">Cash</option>
+            <option value="UPI">UPI</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">
+          <span id="btnText">Upload & Submit</span>
+          <span id="btnLoader" class="spinner hidden" style="margin-left: 8px;"></span>
+        </button>
+      </form>
+    </div>
+  </main>
+  
+  <script type="module" src="user.js"></script>
+</body>
+</html>

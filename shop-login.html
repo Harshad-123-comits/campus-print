@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Campus Print</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-theme">
+  <!-- Dynamic BG -->
+  <div class="bg-blobs">
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+  </div>
+
+  <header class="header-dark animate-slide-up">
+    <div class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+      <a href="index.html">Shop Admin</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="loginCard" class="form-container glass-panel-dark animate-slide-up delay-1">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Secure Access</h2>
+
+      <div id="alertBox" class="alert hidden" style="display: none;"></div>
+
+      <form id="loginForm">
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="email">Administrator Email</label>
+          <input type="email" id="email" required placeholder="Enter admin email">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="password">Administrator Password</label>
+          <input type="password" id="password" required placeholder="Enter standard admin key">
+        </div>
+
+        <button type="submit" id="loginBtn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+          <span id="btnText">Authenticate</span>
+          <span id="btnLoader" class="spinner hidden" style="margin-left: 8px;"></span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="shop-login.js"></script>
+</body>
+
+</html>
